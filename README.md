@@ -1,7 +1,13 @@
 # Topic de Luxo (vetor de nulos, múltiplos vetores, métodos privados)
 
+![GitHub repo size](https://img.shields.io/github/repo-size/WillianSilva51/TopicDeLuxo?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/WillianSilva51/TopicDeLuxo?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/WillianSilva51/TopicDeLuxo?style=for-the-badge)
+
+
 ![](figura.jpg)
-O objetivo dessa atividade é exercitar o que vocês aprenderam no cinema com algumas variações. Aqui, vamos implementar um sistema de alocação de passageiros em uma topic. Nossa topic tem uma quantidade máxima de passageiros, mas também define alguns assentos preferenciais.
+
+> Implementar um sistema de alocação de passageiros em uma topic. Nossa topic tem uma quantidade máxima de passageiros, mas também define alguns assentos preferenciais.
 
 - [Requisitos](#requisitos)
 - [Shell](#shell)

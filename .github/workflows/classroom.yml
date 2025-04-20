@@ -1,0 +1,202 @@
+name: Autograding Tests
+'on':
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Inicialização
+      id: inicializacao
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Inicialização
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.inicializacao'
+        timeout: 10
+        max-score: 10
+
+    - name: Subir passageiro prioritário com vaga prioritária
+      id: subir-passageiro-prioritario-com-vaga
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Subir passageiro prioritário com vaga prioritária
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.subirPassageiroPrioriatioComVagaPrioritaria'
+        timeout: 10
+        max-score: 10
+
+    - name: Subir passageiro sem prioridade com vaga comum
+      id: subir-passageiro-sem-prioridade
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Subir passageiro sem prioridade com vaga comum
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.subirPassageiroSemPrioridadeComVagaComum'
+        timeout: 10
+        max-score: 10
+
+    - name: Subir passageiro prioritário sem vaga prioritária
+      id: subir-passageiro-prioritario-sem-vaga
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Subir passageiro prioritário sem vaga prioritária
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.subirPassageiroPrioriatioSemVagaPrioritaria'
+        timeout: 10
+        max-score: 10
+
+    - name: Subir passageiro sem prioridade sem vaga comum
+      id: subir-passageiro-sem-vaga
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Subir passageiro sem prioridade sem vaga comum
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.subirPassageiroSemPrioridadeSemVagaComum'
+        timeout: 10
+        max-score: 10
+
+    - name: Descida com topic vazia
+      id: descida-topic-vazia
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Descida com topic vazia
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.descidaComTopicVazia'
+        timeout: 10
+        max-score: 10
+
+    - name: Descida de passageiro
+      id: descida-de-passageiro
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Descida de passageiro
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.descidaDePassageiro'
+        timeout: 10
+        max-score: 10
+
+    - name: Descida de passageiro que não subiu
+      id: descida-passageiro-nao-subiu
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Descida de passageiro que não subiu
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.descidaDePassageiroQueNaoSubiu'
+        timeout: 10
+        max-score: 10
+
+    - name: Subir na topic lotada
+      id: subir-topic-lotada
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Subir na topic lotada
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.subirNaTopicLotada'
+        timeout: 10
+        max-score: 10
+
+    - name: Mostrar vagas
+      id: mostrar-vagas
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Mostrar vagas
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.mostrarVagas'
+        timeout: 10
+        max-score: 10
+
+    - name: Mostrar topic vazia
+      id: mostrar-topic-vazia
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Mostrar topic vazia
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.mostrarTopicVazia'
+        timeout: 10
+        max-score: 10
+
+    - name: Mostrar topic cheia
+      id: mostrar-topic-cheia
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Mostrar topic cheia
+        setup-command: ''
+        command: gradle test --tests 'TestTopic.mostrarTopicCheia'
+        timeout: 10
+        max-score: 10
+
+    - name: Criação de passageiro
+      id: criacao-de-passageiro
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Criação de passageiro
+        setup-command: ''
+        command: gradle test --tests 'TestPassageiro.criacaoDePassageiro'
+        timeout: 10
+        max-score: 10
+
+    - name: Test toString
+      id: test-tostring
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test toString
+        setup-command: ''
+        command: gradle test --tests 'TestPassageiro.testToString'
+        timeout: 10
+        max-score: 10
+
+    - name: Prioridade verdadeira
+      id: prioridade-verdadeira
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Prioridade verdadeira
+        setup-command: ''
+        command: gradle test --tests 'TestPassageiro.prioridadeVerdadeira'
+        timeout: 10
+        max-score: 10
+
+    - name: Falsa prioridade
+      id: falsa-prioridade
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Falsa prioridade
+        setup-command: ''
+        command: gradle test --tests 'TestPassageiro.falsaPrioridade'
+        timeout: 10
+        max-score: 10
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        INICIALIZACAO_RESULTS: "${{steps.inicializacao.outputs.result}}"
+        SUBIR-PASSAGEIRO-PRIORITARIO-COM-VAGA_RESULTS: "${{steps.subir-passageiro-prioritario-com-vaga.outputs.result}}"
+        SUBIR-PASSAGEIRO-SEM-PRIORIDADE_RESULTS: "${{steps.subir-passageiro-sem-prioridade.outputs.result}}"
+        SUBIR-PASSAGEIRO-PRIORITARIO-SEM-VAGA_RESULTS: "${{steps.subir-passageiro-prioritario-sem-vaga.outputs.result}}"
+        SUBIR-PASSAGEIRO-SEM-VAGA_RESULTS: "${{steps.subir-passageiro-sem-vaga.outputs.result}}"
+        DESCIDA-TOPIC-VAZIA_RESULTS: "${{steps.descida-topic-vazia.outputs.result}}"
+        DESCIDA-DE-PASSAGEIRO_RESULTS: "${{steps.descida-de-passageiro.outputs.result}}"
+        DESCIDA-PASSAGEIRO-NAO-SUBIU_RESULTS: "${{steps.descida-passageiro-nao-subiu.outputs.result}}"
+        SUBIR-TOPIC-LOTADA_RESULTS: "${{steps.subir-topic-lotada.outputs.result}}"
+        MOSTRAR-VAGAS_RESULTS: "${{steps.mostrar-vagas.outputs.result}}"
+        MOSTRAR-TOPIC-VAZIA_RESULTS: "${{steps.mostrar-topic-vazia.outputs.result}}"
+        MOSTRAR-TOPIC-CHEIA_RESULTS: "${{steps.mostrar-topic-cheia.outputs.result}}"
+        CRIACAO-DE-PASSAGEIRO_RESULTS: "${{steps.criacao-de-passageiro.outputs.result}}"
+        TEST-TOSTRING_RESULTS: "${{steps.test-tostring.outputs.result}}"
+        PRIORIDADE-VERDADEIRA_RESULTS: "${{steps.prioridade-verdadeira.outputs.result}}"
+        FALSA-PRIORIDADE_RESULTS: "${{steps.falsa-prioridade.outputs.result}}"
+      with:
+        runners: inicializacao,subir-passageiro-prioritario-com-vaga,subir-passageiro-sem-prioridade,
+                subir-passageiro-prioritario-sem-vaga,subir-passageiro-sem-vaga,
+                descida-topic-vazia,descida-de-passageiro,descida-passageiro-nao-subiu,
+                subir-topic-lotada,mostrar-vagas,mostrar-topic-vazia,mostrar-topic-cheia,
+                criacao-de-passageiro,test-tostring,prioridade-verdadeira,falsa-prioridade

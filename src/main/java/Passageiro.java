@@ -1,4 +1,4 @@
-public class Passageiro {
+public final class Passageiro {
     private final String nome;
     private final int idade;
 

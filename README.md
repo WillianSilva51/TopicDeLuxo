@@ -9,10 +9,9 @@
 
 > Implementar um sistema de alocação de passageiros em uma topic. Nossa topic tem uma quantidade máxima de passageiros, mas também define alguns assentos preferenciais.
 
+## Indíce
 - [Requisitos](#requisitos)
-- [Shell](#shell)
 - [Diagrama](#diagrama)
-- [Esqueleto](#esqueleto)
 
 
 ***
@@ -50,10 +49,11 @@ Existe uma lista para as cadeiras normais e outra para as preferenciais. Para fa
 ```mermaid
 classDiagram
     class Topic {
-        - List<Passageiro> preferenciais
-        - List<Passageiro> normais
+        - List~Passageiro~ preferenciais
+        - List~Passageiro~ normais
         - int capacidade
         - int qtdPreferenciais
+        
         + Topic(int capacidade, int qtdPreferenciais)
         + boolean subir(Passageiro passageiro)
         + boolean descer(String id)
@@ -67,6 +67,7 @@ classDiagram
     class Passageiro {
         - String id
         - int idade
+        
         + Passageiro(String id, int idade)
         + String getId()
         + int getIdade()

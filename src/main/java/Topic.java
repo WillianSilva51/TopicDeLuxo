@@ -1,10 +1,11 @@
 import java.util.Collections;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Topic {
-    private final ArrayList<Passageiro> preferenciais;
-    private final ArrayList<Passageiro> normais;
+    private final List<Passageiro> preferenciais;
+    private final List<Passageiro> normais;
     private final int capacidade;
     private final int qtdPrioritatios;
 
@@ -49,7 +50,7 @@ public class Topic {
 
     }
 
-    private boolean auxSubir(Passageiro passageiro, ArrayList<Passageiro> normais, ArrayList<Passageiro> preferenciais) {
+    private boolean auxSubir(Passageiro passageiro, List<Passageiro> normais, List<Passageiro> preferenciais) {
         for (int i = 0; i < normais.size(); i++) {
             if (normais.get(i) == null) {
                 normais.set(i, passageiro);
@@ -69,7 +70,7 @@ public class Topic {
         return descerPass(nome, normais) || descerPass(nome, preferenciais);
     }
 
-    private boolean descerPass(String nome, ArrayList<Passageiro> list) {
+    private boolean descerPass(String nome, List<Passageiro> list) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) != null && list.get(i).getNome().equals(nome)) {
                 list.set(i, null);
